@@ -1,0 +1,123 @@
+body {
+  background: linear-gradient(-45deg,rgb(29, 160, 248),rgb(85, 180, 243),rgb(140, 205, 249));
+  height: 100vh;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.player {
+  width: 350px;
+  height: 450px;
+  color: white;
+}
+
+#name--0, #name--1 {
+  font-size: 33px;
+  margin-top: 70px;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px #000;
+}
+
+#score--0, #score--1 {
+  font-size: 50px;
+  margin-top: 5px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px #000;
+}
+
+main .player--0 {
+  background-color: #5D9CEC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+main .player--1 {
+  background-color: #4A89DC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.current {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+
+main .player--1 .current {
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 92px;
+  width: 120px;
+  border-radius: 10px;
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+main .player--0 .current {
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 92px;
+  width: 120px;
+  border-radius: 10px;
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+.dice {
+  display: none;
+}
+
+.btn {
+  position: absolute;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.btn--new {
+  margin-top: 20px;
+  width: 150px;
+}
+
+.dice {
+  position: absolute;
+  margin-top: 150px;
+}
+
+.btn--roll {
+  margin-top: 250px;
+  width: 170px;
+}
+
+.btn--hold {
+  margin-top: 350px;
+  width: 130px;
+}
+
+.btn--win {
+  margin-top: 110px;
+  font-size: 30px;
+}
