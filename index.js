@@ -12,9 +12,9 @@ let tScores0=0;
 let tScores1=0;
 let cScore0=0;
 let cScore1=0;
+let intervalId = null;
 
 const rollDice = () =>{
-    dice.style.display = "none";
     let random=Math.trunc(Math.random()*6)+1;
     dice.src = `${random}.jpg`;
     dice.style.display = "block";
@@ -44,6 +44,7 @@ const checkWinner=()=>{
     while(tScores0 >= 100){
         winner.textContent = "Player 1 wins!";
         tScore0.textContent = tScores0;
+        // clearInterval(intervalId);
         setTimeout(() => {
             resetGame();
         }, 2000);
@@ -52,6 +53,7 @@ const checkWinner=()=>{
     while(tScores1>=100){
         winner.textContent = "Player 2 wins!";
         tScore1.textContent = tScores1;
+        // clearInterval(intervalId);
         setTimeout(() => {
             resetGame();
         }, 2000);
@@ -82,12 +84,19 @@ const resetGame = () => {
     tScores1=0;
     cScore0=0;
     cScore1=0;
+    clearInterval(intervalId);
+    intervalId = null;
     currentScore0.textContent = cScore0;
     currentScore1.textContent = cScore1;
     tScore0.textContent = tScores0;
     tScore1.textContent = tScores1;
     winner.textContent = "";
 }
-roll.addEventListener("click", rollDice);
+roll.addEventListener("click", 
+    () => {
+        if(!intervalId){
+        intervalId = setInterval(rollDice, 1000);
+        }
+    });
 hold.addEventListener("click", switchPlayer);
 newGame.addEventListener("click", resetGame);
