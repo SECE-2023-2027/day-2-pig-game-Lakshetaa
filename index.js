@@ -18,48 +18,60 @@ const rollDice = () =>{
     let random=Math.trunc(Math.random()*6)+1;
     dice.src = `${random}.jpg`;
     dice.style.display = "block";
-    
-    if(random !== 1){
-        if(tScores0 >= 100){
-            winner.textContent = "Player 1 wins!";
-            tScore0.textContent = tScores0;
-            setTimeout(() => {
-                resetGame();
-            }, 2000);
-            return;
-        }else if(tScores1>=100){
-            winner.textContent = "Player 2 wins!";
-            tScore1.textContent = tScores1;
-            setTimeout(() => {
-                resetGame();
-            }, 2000);
-            return;
-        }
-        if(activePlayer === 0){
-            cScore0 += random;
-            tScores0 += random;
-            currentScore0.textContent = cScore0;
-        } else {
-            cScore1 += random;
-            tScores1 += random;
-            currentScore1.textContent = cScore1;
-        }
-    }else{
-        switchPlayer();
+    switch(random){
+        case 1:
+            switchPlayer();
+            break;
+        default:
+            switch(activePlayer){
+                case 0:
+                    cScore0 += random;
+                    tScores0 += random;
+                    currentScore0.textContent = cScore0;
+                    checkWinner();
+                    break;
+                case 1:
+                    cScore1 += random;
+                    tScores1 += random;
+                    currentScore1.textContent = cScore1;
+                    checkWinner();
+                    break;
+            }
     }
 };
 
-const switchPlayer = () => {
-    if(activePlayer === 0){
-        activePlayer=1;
-        cScore0 = 0;
-        currentScore0.textContent = cScore0;
+const checkWinner=()=>{
+    while(tScores0 >= 100){
+        winner.textContent = "Player 1 wins!";
         tScore0.textContent = tScores0;
-    }else{
-        activePlayer=0;
-        cScore1=0;
-        currentScore1.textContent = cScore1;
+        setTimeout(() => {
+            resetGame();
+        }, 2000);
+        return;
+    }
+    while(tScores1>=100){
+        winner.textContent = "Player 2 wins!";
         tScore1.textContent = tScores1;
+        setTimeout(() => {
+            resetGame();
+        }, 2000);
+        return;
+    }
+};
+const switchPlayer = () => {
+    switch(activePlayer){
+        case 0:
+            activePlayer=1;
+            cScore0 = 0;
+            currentScore0.textContent = cScore0;
+            tScore0.textContent = tScores0;
+            break;
+        case 1:
+            activePlayer=0;
+            cScore1=0;
+            currentScore1.textContent = cScore1;
+            tScore1.textContent = tScores1;
+            break;
     }
 };
 
